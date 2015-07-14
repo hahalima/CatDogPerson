@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="#ffff8e64">
+
+    <ScrollView
+        android:id="@+id/topScrollView"
+        android:layout_width="300dp"
+        android:layout_height="380dp"
+        android:background="#ffffff"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/afraidCaninesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/afraid_canines_text"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"/>
+
+            <RadioGroup
+                android:id="@+id/afraidCaninesRG"
+                android:layout_below="@+id/afraidCaninesTextView"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/yes_afraid_radioButton"
+                    android:text="@string/yes_radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/no_afraid_radioButton"
+                    android:text="@string/no_radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/comfortableLevel"
+                android:text="@string/comfortable_level"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/afraidCaninesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <SeekBar
+                android:id="@+id/comfortableSeekBar"
+                android:max="10"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/comfortableLevel"
+                >
+
+            </SeekBar>
+
+            <TextView
+                android:id="@+id/comfortableText"
+                android:text="@string/comfortable_text"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/comfortableSeekBar"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/cutestTextView"
+                android:text="@string/cutest_text"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/comfortableText"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/dogCheckBox"
+                android:text="@string/dog_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/catCheckBox"
+                android:text="@string/cat_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/parrotCheckBox"
+                android:text="@string/parrot_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/droolTextView"
+                android:text="@string/drooling_creatures"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/droolingCheckBoxes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/yes_droll_checkbox"
+                    android:text="@string/yes_droll_checkBox"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/no_droll_checkbox"
+                    android:text="@string/no_droll_checkBox"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/showResultButton"
+        android:text="@string/show_result_button"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/topScrollView"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+    </Button>
+</RelativeLayout>
