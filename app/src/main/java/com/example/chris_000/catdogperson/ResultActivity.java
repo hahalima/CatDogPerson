@@ -4,14 +4,41 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class ResultActivity extends ActionBarActivity {
+
+    private ImageView resultPicture;
+    private TextView resultText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        resultPicture = (ImageView) findViewById(R.id.petImageView);
+        resultText = (TextView) findViewById(R.id.resultTextView);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            int catResult = extras.getInt("catCounter");
+            int dogResult = extras.getInt("dogCounter");
+            System.out.println(catResult + "and" +  dogResult);
+
+            if (catResult < dogResult) {
+                resultText.setText("You are a dog person!");
+                resultPicture.setImageDrawable(getResources().getDrawable(R.drawable.dog_image));
+            }
+            else if(catResult > dogResult) {
+                resultText.setText("You are a cat person!");
+                resultPicture.setImageDrawable(getResources().getDrawable(R.drawable.cat_image));
+            }
+            else {
+                resultText.setText("You are a cat and dog person!");
+            }
+        }
     }
 
     @Override

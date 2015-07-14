@@ -17,4 +17,6 @@
     <string name="no_droll_checkBox">No</string>
     <string name="show_result_button">Show Result</string>
     <string name="title_activity_result">ResultActivity</string>
+    <string name="revealTitle">You are a...</string>
+    <string name="resultTextView"></string>
 </resources>

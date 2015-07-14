@@ -1,6 +1,7 @@
 package com.example.chris_000.catdogperson;
 
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,13 +34,23 @@ public class MainActivity extends ActionBarActivity {
 
     private TextView comfortableText;
 
+    private RadioButton afraidRadioButton;
+    private RadioButton droolRadioButton;
+
     private Button showResultButton;
+
+    int dogCounter;
+    int catCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dogCounter = 0;
+        catCounter = 0;
+
+        //Setting up the views
         showResultButton = (Button) findViewById(R.id.showResultButton);
 
         dogCheckBox = (CheckBox) findViewById(R.id.dogCheckBox);
@@ -53,6 +64,35 @@ public class MainActivity extends ActionBarActivity {
         droolRG = (RadioGroup) findViewById(R.id.droolingCheckBoxes);
         yesDroolRB = (RadioButton) findViewById(R.id.yes_droll_checkbox);
         noDroolRB = (RadioButton) findViewById(R.id.no_droll_checkbox);
+
+        //checking radio buttons if user likes canines or not
+        afraidCaninesRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int value = afraidCaninesRG.getCheckedRadioButtonId();
+                afraidRadioButton = (RadioButton) findViewById(value);
+                if (afraidRadioButton.getText().equals("No")) {
+                    dogCounter += 5;
+                    System.out.println(dogCounter);
+
+                }
+
+            }
+        });
+
+        //checking radio buttons if user likes drool or not
+        droolRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int value = droolRG.getCheckedRadioButtonId();
+                droolRadioButton = (RadioButton) findViewById(value);
+                if (droolRadioButton.getText().equals("Yes")) {
+                    dogCounter += 5;
+                    System.out.println(dogCounter);
+
+                }
+            }
+        });
 
         comfortableText = (TextView) findViewById(R.id.comfortableText);
         comfortableSeekBar = (SeekBar) findViewById(R.id.comfortableSeekBar);
@@ -75,16 +115,35 @@ public class MainActivity extends ActionBarActivity {
             }
         }
         );
+
         showResultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //checking checkboxes for cutest
+                if (dogCheckBox.isChecked() && !catCheckBox.isChecked() && !parrotCheckBox.isChecked()) {
+                    dogCounter += 5;
+                    System.out.println(dogCounter);
+                }
+                else if (!dogCheckBox.isChecked() && catCheckBox.isChecked() && !parrotCheckBox.isChecked()) {
+                    catCounter += 5;
+                    System.out.println(catCounter);
+                }
+                else {
+                    //nothing
+                }
+                
                 //make intents
-
                 Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                intent.putExtra("dogCounter", dogCounter);
+                intent.putExtra("catCounter", catCounter);
 
+                startActivity(intent);
             }
         });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,3 +167,4 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
